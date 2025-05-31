@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Touchless Air-Writing Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div>
+   <div id="main-container">
+    <div id="left-panel">
+
+    <div style="display: flex;
+    justify-content: center;
+    align-items: center; gap:15px">
+        <div id="expression-display" style="width: 70%;">
+        <div id="expression-section">
+          <h3>Input Numbers or Operators</h3>
+          <div id="expression">Ready to calculate...</div>
+        </div>
+        <div id="result-section">
+          <h3>Result</h3>
+          <div id="result"></div>
+        </div>
+      </div>
+        <div id="right-panel"  style="width: 30%;">
+      <div id="finger-count-display">
+        <h3>Fingers Detected</h3>
+        <div id="finger-count">0</div>
+      </div>
+      
+      <div id="status-panel" style="display: none;">
+        <h3>Status</h3>
+        <div id="status-indicator" class="ready">
+          <div class="status-dot"></div>
+          <span id="status-text">Ready - Show fingers to input numbers</span>
+        </div>
+      </div>
+      
+      <div id="instructions" style="display: none;" >
+        <h3>How to Use</h3>
+        <ul class="instruction-list">
+          <li>Show 1-9 fingers below the operator bar to input numbers</li>
+          <li>Point to operators at the top to select them</li>
+          <li>Use the Equals (=) button to calculate the result</li>
+          <li>Use the Clear (C) button to reset</li>
+          <li>Select a camera below to use a different device</li>
+        </ul>
+        <select id="camera-select" onchange="switchCamera()">
+          <option value="">Select Camera</option>
+        </select>
+      </div>
+      </div>
+    </div>
+
+
+      
+      <div id="video-container">
+        <video id="video" autoplay playsinline muted></video>
+        <canvas id="canvas"></canvas>
+        <div id="operator-area">
+          <button class="operator-btn" id="plus">+</button>
+          <button class="operator-btn" id="minus">−</button>
+          <button class="operator-btn" id="multiply">×</button>
+          <button class="operator-btn" id="divide">÷</button>
+          <button class="operator-btn" id="equals">=</button>
+          <button class="operator-btn" id="clear">C</button>
+        </div>
+        <div id="loading-spinner">
+          <div class="spinner"></div>
+          <span>Loading camera...</span>
+        </div>
+      </div>
+    </div>
+
+  
+  </div>
+ </div>
+
+  <div id="error-message"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+ <script src="./app.js"></script>
+</body>
+</html>
